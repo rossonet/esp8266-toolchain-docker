@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 	ca-certificates tar bzip2 wget make git gperf sed bash help2man libtool libtool-bin \
 	autoconf automake libtool gcc g++ flex bison texinfo gawk ncurses-dev \
 	libffi-dev libssl-dev python python-dev python-setuptools python-pip \
-	minicom lua5.2 vim
+	minicom lua5.2 vim xterm
 
 # Install cmake 3.5
 ARG CMAKE_VERSION=3.5
