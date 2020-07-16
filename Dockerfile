@@ -1,7 +1,5 @@
 FROM debian:jessie-slim
 
-MAINTAINER Lukasz Marcin Podkalicki <lpodkalicki@gmail.com>
-
 # Prepare directory for tools
 ARG TOOLS_PATH=/tools
 RUN mkdir ${TOOLS_PATH}
@@ -39,7 +37,7 @@ ENV PATH="${TOOLCHAIN_PATH}/bin:${PATH}"
 # Install RTOS SDK
 ARG IDF_PATH=${TOOLS_PATH}/ESP8266_RTOS_SDK
 ARG MISSING_ESPTOOL_CMAKE_URL=https://raw.githubusercontent.com/espressif/esp-idf/master/components/esptool_py/run_esptool.cmake
-RUN git clone https://github.com/espressif/ESP8266_RTOS_SDK.git \
+RUN git clone https://github.com/rossonet/ESP8266_RTOS_SDK.git \
 	&& python -m pip install pip==20.1 \
 	&& pip install --upgrade setuptools \
 	&& python -m pip install --user -r ${IDF_PATH}/requirements.txt \
@@ -50,7 +48,7 @@ RUN git submodule init && git submodule update
 
 ENV PATH="${IDF_PATH}/tools:${PATH}"
 ENV IDF_PATH=${IDF_PATH}
-ENV PWD=/build
+ENV PWD=/code
 
 # Change workdir
-WORKDIR /build
+WORKDIR /code
